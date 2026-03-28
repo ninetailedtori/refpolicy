@@ -29,12 +29,15 @@ jobs:
         direct_initrc: ["y", "n"]
         apps-off: ["unconfined", ""]
         exclude:
-          - { distro: "redhat", systemd: "n" }
-          - { distro: "redhat", direct_initrc: "y" }
-          - { distro: "debian", systemd: "n" }
-          - { distro: "debian", direct_initrc: "y" }
-          - { type: "mls", apps-off: "" }
-          - { systemd: "y", direct_initrc: "y" }
+          - { type: "standard", distro: "arch", monolithic: "y" systemd: "y" }
+          - { type: "standard", distro: "arch", monolithic: "n" systemd: "y" }
+          - { type: "standard", distro: "arch", monolithic: "y" systemd: "y", apps-off: "unconfined" }
+          - { type: "mcs",      distro: "arch", monolithic: "y" systemd: "y" }
+          - { type: "mcs",      distro: "arch", monolithic: "n" systemd: "y" }
+          - { type: "mcs",      distro: "arch", monolithic: "y" systemd: "y", apps-off: "unconfined" }
+          - { type: "mls",      distro: "arch", monolithic: "y" systemd: "y" }
+          - { type: "mls",      distro: "arch", monolithic: "n" systemd: "y" }
+          - { type: "mls",      distro: "arch", monolithic: "y" systemd: "y", apps-off: "unconfined" }
           # above here, the matrix must be the same as in build-policy.yml.
           # below here, remove duplicate analyses
           - { monolithic: "n" }
